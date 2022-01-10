@@ -22,3 +22,13 @@
 ```
 ### 设置回显元素标注数据
 ![](./标注回显.gif)
+
+
+#注意
+<span style="font-weight: bold; color: red">采用 XPath 定位数据，如果页面结构发生大的结构变化会导致标注信息失效。</span>
+
+# 参考
+* https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html
+* https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
+* https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate
+* https://www.cnblogs.com/hushaojun/p/6651491.html
