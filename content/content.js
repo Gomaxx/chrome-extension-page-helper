@@ -10,11 +10,12 @@
  */
 
 
-var data = {
-    '//*[@id="u4384_text"]/p/span': "111",
-    '//*[@id="u3857_text"]/p/span': 'xxxx',
-    '//*[@id="u6328_text"]/p[1]/span[1]': 'oma.onen demo'
-};
+// var data = {
+//     '//*[@id="u4384_text"]/p/span': "111",
+//     '//*[@id="u3857_text"]/p/span': 'xxxx',
+//     '//*[@id="u6328_text"]/p[1]/span[1]': 'oma.onen demo'
+// };
+var data = {};
 
 //获取xpath
 function readXPath(element) {
