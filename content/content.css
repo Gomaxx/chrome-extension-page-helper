@@ -78,11 +78,11 @@
     cursor: pointer;
 }
 
-.ceph-window > .ceph-wind-title > .ceph-wind-close::before {
+.ceph-window > .ceph-wind-title > .ceph-wind-close:before {
     content: "\2715";
 }
 
-.ceph-window > .ceph-wind-title > .ceph-wind-save::before {
+.ceph-window > .ceph-wind-title > .ceph-wind-save:before {
     content: "\2713";
 }
 

@@ -1,4 +1,4 @@
-function startDomComment(message, callback) {
+function sendContentMessage(message, callback) {
     console.log("send message to start dom comment", message)
     chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
         chrome.tabs.sendMessage(tabs[0].id, message, function (response) {
@@ -10,6 +10,14 @@ function startDomComment(message, callback) {
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("ceph-popup-start-btn").onclick = function () {
-        startDomComment({"event": "start-dom-comment"}, null);
+        sendContentMessage({"event": "start-dom-comment"}, null);
+    }
+
+    document.getElementById("ceph-popup-set-data-btn").onclick = function () {
+        var textarea = document.getElementsByTagName("textarea")[0];
+        if (textarea) {
+            console.log(textarea.value)
+            sendContentMessage({"event": "show-dom-comment", "data": textarea.value}, null);
+        }
     }
 });

@@ -116,7 +116,7 @@ function saveComment() {
     var xpath = input.value;
     var comment = textarea.value;
 
-    setCommentByXpath(xpath, comment)
+    showCommentByXpath(xpath, comment)
 
     if (!xpath || '' === xpath) {
         document.getElementById("ceph-window").style.display = "none";
@@ -173,13 +173,13 @@ function createCommentWindow() {
     document.body.appendChild(win)
 }
 
-function setCommentByXpaths(params) {
-    for (var xpath in params) {
-        setCommentByXpath(xpath, data[xpath]);
+function showCommentByXpaths(param) {
+    for (var xpath in param) {
+        showCommentByXpath(xpath, param[xpath]);
     }
 }
 
-function setCommentByXpath(xpath, title) {
+function showCommentByXpath(xpath, title) {
     var result = document.evaluate(xpath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
     console.log(`find dom by {}, result: {}`, xpath, result)
     if (!result) {
@@ -192,11 +192,20 @@ function setCommentByXpath(xpath, title) {
     }
 }
 
+function toJSON(param) {
+    try {
+        return eval("(" + param + ")");
+    } catch (ex) {
+        console.log(ex)
+    }
+    return {};
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     createPickDomMask();
     createCommentWindow();
     // setTimeout(function () {
-    //     setCommentByXpaths(data)
+    //     showCommentByXpaths(data)
     // }, 50)
 
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -204,6 +213,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (request.event === "start-dom-comment") {
                 document.getElementById("ceph-mask").style.display = "block";
             }
+
+            if (request.event === "show-dom-comment") {
+                console.log(request)
+                var datax = toJSON(request.data);
+                console.log(datax);
+                showCommentByXpaths(datax)
+            }
+
             sendResponse({"content": "response"});
         }
     );

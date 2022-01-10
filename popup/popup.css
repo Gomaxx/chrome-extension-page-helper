@@ -1,0 +1,64 @@
+
+.ceph-popup-btn {
+    padding: 5px;
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #288479;
+    border-radius: 3px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    margin: 5px auto;
+}
+
+.ceph-popup-btn:hover {
+    background-color: #158d7f;
+}
+
+#ceph-popup-sync-data {
+    background-color: #ddd6d6 !important;
+    cursor: none;
+}
+
+#ceph-popup-set-data {
+    width: 100%;
+    height: 130px;
+    position: relative;
+}
+
+#ceph-popup-set-data > textarea {
+    width: 188px;
+    height: 118px;
+    padding: 5px;
+    margin: 0;
+    resize: none;
+    border: 1px solid gray;
+    border-radius: 3px;
+    float: left;
+}
+
+#ceph-popup-set-data > textarea:focus {
+    border: 1px solid gray;
+}
+
+#ceph-popup-set-data-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    background-color: #288479;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#ceph-popup-set-data-btn:before {
+    content: "\2713";
+}

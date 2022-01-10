@@ -4,35 +4,16 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script type="text/javascript" src="popup.js"></script>
-    <style type="text/css" rel="stylesheet">
-        .ceph-popup-btn {
-            padding: 5px;
-            font-size: 16px;
-            height: 20px;
-            line-height: 20px;
-            text-align: center;
-            background-color: #288479;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-            font-weight: bold;
-            margin: 5px auto;
-        }
-
-        .ceph-popup-btn:hover {
-            background-color: #158d7f;
-        }
-
-        #ceph-popup-sync-data {
-            background-color: #ddd6d6 !important;
-            cursor: none;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
 <body>
-<div style="width: 200px; height: 300px;">
+<div style="width: 200px; height: 200px;">
     <div id="ceph-popup-start-btn" class="ceph-popup-btn">start add dom comment</div>
     <div id="ceph-popup-sync-data" class="ceph-popup-btn">start syncerize data</div>
+    <div id="ceph-popup-set-data">
+        <textarea title="set dom comment data json"></textarea>
+        <div id="ceph-popup-set-data-btn"></div>
+    </div>
 </div>
 </body>
 </html>
