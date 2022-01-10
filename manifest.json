@@ -1,0 +1,39 @@
+{
+  "manifest_version": 2,
+  "name": "web-page-helper",
+  "version": "1.0.0",
+  "description": "web page add cmment",
+  "icons": {
+    "16": "./img/icon.png",
+    "48": "./img/icon.png",
+    "128": "./img/icon.png"
+  },
+  "browser_action": {
+    "default_icon": "./img/icon.png",
+    "default_title": "web page helper",
+    "default_popup": "./popup/popup.html"
+  },
+  "permissions": [
+    "tabs"
+  ],
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/content.js"
+      ],
+      "css": [
+        "content/content.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "homepage_url": "https://www.null.com"
+}
