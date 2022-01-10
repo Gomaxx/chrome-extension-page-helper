@@ -24,6 +24,10 @@
 ![](./标注回显.gif)
 
 
+<span style="font-weight: bold; color: red">目前标注数据，只能拷贝，后续考虑做团队数据共享</span>
+
+
+
 #注意
 <span style="font-weight: bold; color: red">采用 XPath 定位数据，如果页面结构发生大的结构变化会导致标注信息失效。</span>
 
