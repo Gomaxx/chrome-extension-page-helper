@@ -79,13 +79,10 @@ function openCommentInformationWin(x, y) {
 
     var scrollTop = document.documentElement.scrollTop;
     var scrollLeft = document.documentElement.scrollLeft;
-
     var maxWidth = document.body.scrollWidth;
     var maxHeight = document.body.scrollHeight;
-
     console.log("max:" + maxWidth + ":" + maxHeight)
     console.log("scroll:" + scrollLeft + ":" + scrollTop);
-
     var winTop = scrollTop + y > maxHeight - 400 ? maxHeight - 400 : scrollTop + y;
     var winLeft = scrollLeft + x > maxWidth - 400 ? maxWidth - 400 : scrollLeft + x;
 
@@ -99,13 +96,10 @@ function setComment(path, value) {
     console.log("set comment", path, value)
     var inputPath = '//*[@id="ceph-window"]/div[2]/input';
     var input = document.evaluate(inputPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    input.value = path;
-    if (!value) {
-        return;
-    }
+    input.value = path || '';
     var textareaPath = '//*[@id="ceph-window"]/div[2]/textarea';
     var textarea = document.evaluate(textareaPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-    textarea.value = value;
+    textarea.value = value || '';
 }
 
 function saveComment() {
@@ -116,19 +110,16 @@ function saveComment() {
     var textarea = document.evaluate(textareaPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     var xpath = input.value;
     var comment = textarea.value;
-
-    showCommentByXpath(xpath, comment)
-
     if (!xpath || '' === xpath) {
         document.getElementById("ceph-window").style.display = "none";
         return
     }
+    showCommentByXpath(xpath, comment)
+    notifyBgAndPopup({"event": "addDomComment", "data": data}, null)
     if (!comment || '' === comment) {
         delete data[xpath]
     }
     data[xpath] = comment;
-    input.value = ''
-    textarea.value = ''
     document.getElementById("ceph-window").style.display = "none";
     console.log(data)
 }
@@ -202,6 +193,13 @@ function toJSON(param) {
     return {};
 }
 
+function notifyBgAndPopup(message, callback) {
+    chrome.runtime.sendMessage(message, function (response) {
+        console.log('get response：' + response);
+        if (callback) callback(response)
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     createPickDomMask();
     createCommentWindow();
@@ -209,19 +207,23 @@ document.addEventListener('DOMContentLoaded', function () {
     //     showCommentByXpaths(data)
     // }, 50)
 
+    var url = document.location.href;
+    notifyBgAndPopup({"event": "get-dom-comment", "url": url}, function (response) {
+        showCommentByXpaths(response)
+    })
+
+
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
             if (request.event === "start-dom-comment") {
                 document.getElementById("ceph-mask").style.display = "block";
             }
-
             if (request.event === "show-dom-comment") {
                 console.log(request)
                 var datax = toJSON(request.data);
                 console.log(datax);
                 showCommentByXpaths(datax)
             }
-
             sendResponse({"content": "response"});
         }
     );

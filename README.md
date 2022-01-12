@@ -33,6 +33,7 @@
 
 # 参考
 * https://developer.chrome.com/docs/extensions/
+* https://www.chromium.org/Home/chromium-security/extension-content-script-fetches
 * https://www.cnblogs.com/liuxianan/p/chrome-plugin-develop.html
 * https://developer.mozilla.org/en-US/docs/Web/API/Document/elementFromPoint
 * https://developer.mozilla.org/en-US/docs/Web/API/Document/evaluate

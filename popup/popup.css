@@ -1,26 +1,30 @@
+body {
+    background-color: black;
+    padding: 10px;
+    margin: 0;
+}
 
 .ceph-popup-btn {
     padding: 5px;
-    font-size: 16px;
-    height: 20px;
-    line-height: 20px;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
     text-align: center;
-    background-color: #288479;
+    background-color: #2baf9f;
     border-radius: 3px;
     cursor: pointer;
     color: white;
-    font-weight: bold;
-    margin: 5px auto;
+    margin: 5px auto 10px auto;
 }
 
 .ceph-popup-btn:hover {
     background-color: #158d7f;
 }
 
-#ceph-popup-sync-data {
-    background-color: #ddd6d6 !important;
-    cursor: none;
-}
+/*#ceph-popup-sync-data {*/
+/*    background-color: #ddd6d6 !important;*/
+/*    cursor: none;*/
+/*}*/
 
 #ceph-popup-set-data {
     width: 100%;
@@ -51,14 +55,17 @@
     height: 20px;
     line-height: 20px;
     text-align: center;
-    font-size: 18px;
+    font-size: 16px;
     color: white;
-    font-weight: bold;
-    background-color: #288479;
+    background-color: #2baf9f;
     border-radius: 20px;
     cursor: pointer;
 }
 
 #ceph-popup-set-data-btn:before {
     content: "\2713";
+}
+
+#ceph-popup-set-data-btn:hover {
+    background-color: #158d7f;
 }
