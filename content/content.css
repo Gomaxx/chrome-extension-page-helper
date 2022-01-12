@@ -50,13 +50,14 @@
 }
 
 .ceph-window > .ceph-wind-title {
+    box-sizing: border-box;
     color: white;
     font-weight: bold;
     background-color: #2baf9f;
-    width: 390px;
+    width: 400px !important;
     height: 50px;
     line-height: 50px;
-    padding: 5px;
+    padding: 5px !important;
 }
 
 .ceph-window > .ceph-wind-content {
@@ -102,4 +103,6 @@
     outline: none !important;
     box-sizing: border-box !important;
     background-color: white;
+    font-size: 16px !important;
+    font-family: 新宋体 !important;
 }

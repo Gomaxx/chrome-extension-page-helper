@@ -8,16 +8,27 @@ function sendContentMessage(message, callback) {
     });
 }
 
+function setDomComment(){
+    var textarea = document.getElementsByTagName("textarea")[0];
+    if (textarea) {
+        console.log(textarea.value)
+        sendContentMessage({"event": "show-dom-comment", "data": textarea.value}, null);
+    }
+}
+
+function sync(){
+    alert("敬请期待")
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById("ceph-popup-start-btn").onclick = function () {
         sendContentMessage({"event": "start-dom-comment"}, null);
     }
-
     document.getElementById("ceph-popup-set-data-btn").onclick = function () {
-        var textarea = document.getElementsByTagName("textarea")[0];
-        if (textarea) {
-            console.log(textarea.value)
-            sendContentMessage({"event": "show-dom-comment", "data": textarea.value}, null);
-        }
+        setDomComment();
+    }
+    document.getElementById("ceph-popup-sync-data").onclick = function () {
+        sync();
     }
 });
