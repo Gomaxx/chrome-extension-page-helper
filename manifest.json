@@ -40,6 +40,6 @@
       "run_at": "document_start"
     }
   ],
-  "web_accessible_resources": ["background/window.html"],
+  "web_accessible_resources": ["login/login.html"],
   "homepage_url": "https://www.null.com"
 }

@@ -122,6 +122,9 @@ function saveComment() {
     data[xpath] = comment;
     document.getElementById("ceph-window").style.display = "none";
     console.log(data)
+
+    notifyBgAndPopup({"event": "add-dom-comment", "data": {"xpath": xpath, "comment": comment}}, null);
+
 }
 
 function createCommentWindow() {
@@ -208,10 +211,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // }, 50)
 
     var url = document.location.href;
-    notifyBgAndPopup({"event": "get-dom-comment", "url": url}, function (response) {
+    notifyBgAndPopup({"event": "set-dom-uri", "url": url}, function (response) {
         showCommentByXpaths(response)
     })
-
 
     chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
@@ -229,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var height = window.screen.height / 2 - 240;
                 var top = height > 0 ? height : 0;
                 var left = width > 0 ? width : 0;
-                var xxx = chrome.runtime.getURL("./background/window.html");
+                var xxx = chrome.runtime.getURL("./login/login.html");
                 window.open(xxx, 'window-name', 'height=480, width=340, top=' + top + ',left=' + left + ', toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')
             }
 
