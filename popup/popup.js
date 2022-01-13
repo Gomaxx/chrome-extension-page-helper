@@ -8,7 +8,7 @@ function sendContentMessage(message, callback) {
     });
 }
 
-function setDomComment(){
+function setDomComment() {
     var textarea = document.getElementsByTagName("textarea")[0];
     if (textarea) {
         console.log(textarea.value)
@@ -16,8 +16,9 @@ function setDomComment(){
     }
 }
 
-function sync(){
-    alert("敬请期待")
+function sync() {
+    var backgroundPage = chrome.extension.getBackgroundPage();
+    backgroundPage.getProjects();
 }
 
 

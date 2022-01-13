@@ -14,7 +14,10 @@
     "default_popup": "./popup/popup.html"
   },
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage",
+    "http://*/*",
+    "https://*/*"
   ],
   "background": {
     "scripts": [
@@ -37,5 +40,6 @@
       "run_at": "document_start"
     }
   ],
+  "web_accessible_resources": ["background/window.html"],
   "homepage_url": "https://www.null.com"
 }

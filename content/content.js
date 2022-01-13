@@ -224,6 +224,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(datax);
                 showCommentByXpaths(datax)
             }
+            if (request.event === 'show-login') {
+                var width = window.screen.width / 2 - 170;
+                var height = window.screen.height / 2 - 240;
+                var top = height > 0 ? height : 0;
+                var left = width > 0 ? width : 0;
+                var xxx = chrome.runtime.getURL("./background/window.html");
+                window.open(xxx, 'window-name', 'height=480, width=340, top=' + top + ',left=' + left + ', toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no')
+            }
+
             sendResponse({"content": "response"});
         }
     );
