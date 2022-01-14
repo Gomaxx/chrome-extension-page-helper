@@ -16,7 +16,6 @@ function login() {
             var backgroundPage = chrome.extension.getBackgroundPage();
             backgroundPage.getProjects();
         });
-        alert("xxxxx")
         window.close();
     }).catch(ex => console.log(ex));
 }
