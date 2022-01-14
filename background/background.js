@@ -35,7 +35,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 
-function saveDomComment(data, sendResponse){
+function saveDomComment(data, sendResponse) {
     chrome.storage.local.get(['token'], function (result) {
         var token = result.token;
         if (!token) {
@@ -80,7 +80,12 @@ function getProjects() {
             body: JSON.stringify(data)
         }).then(response => response.json()).then(data => {
             console.log(data)
-            sendMessage({"event": "show-dom-comment", "data": JSON.stringify(data)}, null);
+            var list = data.data;
+            var xxx = {};
+            for (var i = 0; i < list.length; i++) {
+                xxx[list[i].xpath] = list[i].comment
+            }
+            sendMessage({"event": "show-dom-comment", "data": JSON.stringify(xxx)}, null);
         }).catch(error => console.error(error))
 
 
